@@ -36,7 +36,8 @@ def get_customer(customer_id: int):
     conn = psycopg2.connect(dbname = "first_db", user = "linao", password = "Linareda123")
     cur = conn.cursor()
 
-    data = cur.execute("SELECT * FROM Customers WHERE customer_id = %s", (customer_id, )).fetchone()
+    cur.execute("SELECT * FROM Customers WHERE customer_id = %s", (customer_id,))
+    data = cur.fetchone()
 
     cur.close()
     conn.close()
