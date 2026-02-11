@@ -1,6 +1,6 @@
 import psycopg2
 
-conn = psycopg2.connect(dbname = "first_db", user = "linao", password ="Linareda123")
+conn = psycopg2.connect(dbname = "first_db", user = "user", password ="password")
 cur = conn.cursor()
 
 cur.execute("DROP TABLE IF EXISTS Customers")
