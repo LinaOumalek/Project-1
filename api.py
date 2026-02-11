@@ -22,7 +22,7 @@ class CustomerUpdate(BaseModel):
 @app.post("/customers")
 def add_customer(customer: Customer):
     #add to table
-    conn = psycopg2.connect(dbname = "first_db", user = "linao", password = "Linareda123")
+    conn = psycopg2.connect(dbname = "first_db", user = "user", password = "password")
     cur = conn.cursor()
 
     cur.execute("INSERT INTO Customers (name, email_address, phone_number) VALUES (%s ,%s ,%s)", (customer.name, customer.email_address, customer.phone_number))
@@ -33,7 +33,7 @@ def add_customer(customer: Customer):
 
 @app.get("/customers/{customer_id}")
 def get_customer(customer_id: int):
-    conn = psycopg2.connect(dbname = "first_db", user = "linao", password = "Linareda123")
+    conn = psycopg2.connect(dbname = "first_db", user = "user", password = "password")
     cur = conn.cursor()
 
     cur.execute("SELECT * FROM Customers WHERE customer_id = %s", (customer_id,))
@@ -46,7 +46,7 @@ def get_customer(customer_id: int):
 
 @app.patch("/customers/{customer_id}")
 def update_customer(customer_id: int, customer: CustomerUpdate):
-    conn = psycopg2.connect(dbname = "first_db", user = "linao", password = "Linareda123")
+    conn = psycopg2.connect(dbname = "first_db",user = "user", password = "password")
     cur = conn.cursor()
     fields = []
     values = []
@@ -72,7 +72,7 @@ def update_customer(customer_id: int, customer: CustomerUpdate):
 
 @app.delete("/customers/{customer_id}")
 def delete_customer(customer_id: int):
-    conn = psycopg2.connect(dbname = "first_db", user = "linao", password = "Linareda123")
+    conn = psycopg2.connect(dbname = "first_db", user = "user", password = "password")
     cur = conn.cursor()
 
     cur.execute("DELETE FROM Customers WHERE customer_id = %s" , (customer_id, ))
